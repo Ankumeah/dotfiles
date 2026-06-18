@@ -1,0 +1,47 @@
+# vim: filetype=sh
+
+catr() {
+  if [[ -d "${1}" ]]; then
+    cd "${1}" || return
+  elif [[ -n "${1}" ]]; then
+    echo "${1} is not a directory"
+    exit 1
+  fi
+
+  for file in ./**/*; do
+    is_text=$(file --mime-type -b ${file} | grep text)
+
+    echo -e "===== ${file} ====="
+    if [ -n "${is_text}" ]; then
+      if [ "${2}" = "--bat" ]; then
+        bat --paging=never "${file}"
+      else
+        cat "${file}"
+      fi
+    fi
+    if [ "${2}" != "--bat" ]; then echo ""; fi
+
+  done
+
+  cd - > /dev/null || return
+}
+
+catf() {
+  for file in "$@"; do
+    if [ "$file" = "catf" ]; then continue; fi
+
+    echo -e "\n= $file =>\n"
+    cat "$file"
+  done
+}
+
+alias kitty_bar='kitty +kitten panel --edge=background -o font_size=16 -o background_opacity=0.4 $1'
+alias ls='ls --color=auto'
+alias chwal="~/.config/change_wallpaper/change_wallpaper.sh"
+alias mload="yt-dlp -x --audio-format mp3 --embed-thumbnail"
+alias bat="bat --paging=never"
+alias rec="wf-recorder -a=alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -f ${HOME}/Videos/Screen_recordings/recording_$(date +%d-%m-%Y_%H-%M-%S-%3N).mkv"
+alias hist="cat ~/.his_zsh | fzf"
+alias loc="ip a | grep 'inet.*wlan0' | grep -o '\s[0-9.]*/' | grep -o '[0-9.]*'"
+alias alert="pw-play /usr/share/sounds/freedesktop/stereo/complete.oga"
+alias arya="aria2c -x 16 -s 16 -k 1M"

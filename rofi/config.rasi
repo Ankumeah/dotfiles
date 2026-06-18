@@ -1,0 +1,46 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    display-drun: "";
+    drun-display-format: "{icon} {name}";
+    show-icons: true;
+    icon-theme: "Papirus";
+    font: "JetBrainsMono Nerd Font Medium 18";
+}
+
+window {
+    width: 50%;
+    height: 45%;
+    border-radius: 10px;
+    border: 2px;
+    border-color: @foreground;
+}
+
+inputbar {
+    children: [ entry ];
+    padding: 0px 0px 15px 0px;
+}
+
+entry {
+    border-radius: 10px;
+    border-color: @foreground;
+    border: 2px;
+    padding: 10px 10px 10px 10px;
+    placeholder: "Search";
+    }
+
+element {
+    padding: 5px;
+}
+
+element selected {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px;
+    border-color: @foreground;
+}
+
+scrollbar {
+    width: 0px;
+    handle-width: 0px;
+}

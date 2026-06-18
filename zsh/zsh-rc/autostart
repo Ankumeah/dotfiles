@@ -1,0 +1,7 @@
+# vim: filetype=sh
+
+if [ -n "${SSH_TTY}" ]; then
+  wal -R > /dev/null
+fi
+
+fastfetch
