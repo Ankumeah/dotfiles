@@ -1,0 +1,7 @@
+Terminal = "kitty"
+FileManager = "pcmanfm"
+Menu = "rofi -show drun"
+Browser = "zen-browser"
+MediaPlayer = "vlc"
+MusicPlayer = "audacious"
+Lockscreen = "hyprlock"
