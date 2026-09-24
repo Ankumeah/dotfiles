@@ -57,7 +57,7 @@
       image_switch == 1 ? "./assets/bongo_cat_right_up.png" :
       image_switch == 2 ? "./assets/bongo_cat_left_up.png" :
       "./assets/bongo_cat_both_up.png"
-      } 
+      }
       :image-height 30)
   )
 )

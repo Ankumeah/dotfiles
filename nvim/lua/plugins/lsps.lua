@@ -38,8 +38,8 @@ return {
           opts.settings = { yaml = { schemas = schemas } }
         elseif lsp == "lua_ls" then
           opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
-        elseif lsp == "gopls" then
-          opts.settings = { gopls = { buildFlags = { "-tags=sqlite3" } } }
+        elseif lsp == "html" then
+          opts.filetypes = { "html", "template" }
         end
 
         vim.lsp.config(lsp, opts)
@@ -47,11 +47,15 @@ return {
       end
 
       vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+      vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+      vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+      vim.keymap.set("n", "<leader>s", vim.lsp.buf.references)
+      vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition)
     end
   },
   {
     "mason-org/mason-lspconfig.nvim",
     dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
     opts = { ensure_installed = require("lsps") }
-  }
+  },
 }

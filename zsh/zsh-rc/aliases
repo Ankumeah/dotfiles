@@ -2,7 +2,8 @@
 
 catr() {
   if [[ -d "${1}" ]]; then
-    cd "${1}" || return
+    cd "${1}"
+    cded="yes"
   elif [[ -n "${1}" ]]; then
     echo "${1} is not a directory"
     exit 1
@@ -23,7 +24,9 @@ catr() {
 
   done
 
-  cd - > /dev/null || return
+  if [ -n "$cded" ]; then
+    cd - > /dev/null
+  fi
 }
 
 catf() {
@@ -40,7 +43,7 @@ alias ls='ls --color=auto'
 alias chwal="~/.config/change_wallpaper/change_wallpaper.sh"
 alias mload="yt-dlp -x --audio-format mp3 --embed-thumbnail"
 alias bat="bat --paging=never"
-alias rec="wf-recorder -a=alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -f ${HOME}/Videos/Screen_recordings/recording_$(date +%d-%m-%Y_%H-%M-%S-%3N).mkv"
+alias rec='wf-recorder -a=alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -f ${HOME}/Videos/Screen_recordings/recording_$(date +%d-%m-%Y_%H-%M-%S-%3N).mkv'
 alias hist="cat ~/.his_zsh | fzf"
 alias loc="ip a | grep 'inet.*wlan0' | grep -o '\s[0-9.]*/' | grep -o '[0-9.]*'"
 alias alert="pw-play /usr/share/sounds/freedesktop/stereo/complete.oga"

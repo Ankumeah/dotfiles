@@ -5,7 +5,6 @@ wal -i $1
 
 for sock in "$XDG_RUNTIME_DIR"/nvim.*.0; do
   if [[ -S "$sock" ]]; then
-    nvim --server "$sock" --remote-send ':colorscheme quite<CR>' &
     nvim --server "$sock" --remote-send ':colorscheme pywal<CR>' &
   fi
 done

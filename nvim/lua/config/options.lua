@@ -10,6 +10,8 @@ vim.g.clipboard = {
   }
 }
 
+vim.o.exrc = true
+
 vim.o.number = true
 vim.o.relativenumber = true
 
@@ -67,3 +69,25 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#553333" })
 vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
+
+for _, mode in ipairs({ "n", "i", "v" }) do
+  local prefix = ""
+  if mode == "i" then
+    prefix = "<C-o>"
+  elseif mode == "v" then
+    prefix = "<Esc>"
+  end
+  for _, key in ipairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
+    vim.keymap.set(mode, key, prefix .. ":echoe 'Get off my lawn!'<CR>")
+  end
+end
+
+vim.cmd([[
+  aunmenu PopUp
+  autocmd! nvim.popupmenu
+]])
+
+vim.keymap.set("n", "<leader>i", vim.diagnostic.setqflist, { desc = "Show all diagnostics" })
+vim.keymap.set("n", "<leader>ci", vim.diagnostic.setloclist, { desc = "Show buffer diagnostics" })
+
+require("config.todos")
