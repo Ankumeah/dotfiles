@@ -2,12 +2,10 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(Terminal))
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(Browser))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(Menu))
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(MusicPlayer))
 hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.exec_cmd(Lockscreen))
 
-hl.bind("Print", hl.dsp.exec_cmd("grim -o \"$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')\" ~/Pictures/Screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S-%N').png && notify-send \"Screenshot taken\""))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim -o \"$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')\" ~/Pictures/Screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S-%N').png && notify-send \"Screenshot taken\""))
 hl.bind(mainMod .. " + SPACE", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.window.float({ mode = "floating", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + n", hl.dsp.exec_cmd("makoctl dismiss -a"))

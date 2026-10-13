@@ -15,8 +15,6 @@ if [[ -s "$tmpfile" ]]; then
     notify-send "Wallpaper" "Not a supported file type"
     ;;
   esac
-else
-  notify-send "Wallpaper" "No file selected."
 fi
 
 rm -f "$tmpfile"

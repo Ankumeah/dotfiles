@@ -1,7 +1,1 @@
 # vim: filetype=sh
-
-export PATH="${HOME}/.local/bin:${PATH}"
-export PATH="${HOME}/go/bin:${PATH}"
-
-export PATH=/home/anku/bin:$PATH
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
